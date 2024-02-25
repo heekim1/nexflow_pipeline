@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'bfx-ngs.java-project-conventions'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":common")
+    implementation project(":consensus")
+}
+
+jar {
+    manifest {
+        attributes(
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Main-Class": "com.roche.bfx.sbx.pipeline.Main"
+        )
+    }
+// Adds runtime for logback / slfj-api
+    from {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+

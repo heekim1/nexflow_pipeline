@@ -1,0 +1,10 @@
+params.finalDir = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/SC1/out_10k"
+
+params.runFastq = "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz"
+params.regexpattern = "/sc1/groups/naa/DATA/SBX/pipeline/resource/pocc_patterns_072722.txt"
+
+params.reference = "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa"
+params.regions = "/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed"
+
+params.chunkSize = 2500
+params.splitByChrom = true

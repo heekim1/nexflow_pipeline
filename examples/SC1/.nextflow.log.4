@@ -1,0 +1,120 @@
+Jan-18 13:27:59.360 [main] DEBUG nextflow.cli.Launcher - $> nextflow run ../../nextflow/workflows/demultiplex.nf -profile cluster -ansi-log false -with-report /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/report.html -with-timeline /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/timeline.html -with-trace /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/trace.txt -work-dir /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/work --runFastq 's3://bfx-ngs-data-catalog/bfx-ngs-pipeline-data/run_fastq_10k.fastq.gz' --regexpattern /sc1/groups/naa/DATA/SBX/pipeline/resource/pocc_patterns_072722.txt --finalDir /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3
+Jan-18 13:27:59.457 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 20.10.0
+Jan-18 13:27:59.468 [main] INFO  nextflow.cli.CmdRun - Launching `../../nextflow/workflows/demultiplex.nf` [drunk_shirley] - revision: 5993fa6beb
+Jan-18 13:27:59.491 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/nextflow/workflows/nextflow.config
+Jan-18 13:27:59.493 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/nextflow/workflows/nextflow.config
+Jan-18 13:27:59.514 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `cluster`
+Jan-18 13:28:00.284 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, cluster, local]
+Jan-18 13:28:00.349 [main] DEBUG nextflow.Session - Session uuid: cecbb3db-ccb1-4402-81d7-71799a57d117
+Jan-18 13:28:00.349 [main] DEBUG nextflow.Session - Run name: drunk_shirley
+Jan-18 13:28:00.350 [main] DEBUG nextflow.Session - Executor pool size: 28
+Jan-18 13:28:00.381 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 20.10.0 build 5430
+  Created: 01-11-2020 15:14 UTC (07:14 PDT)
+  System: Linux 3.10.0-1160.53.1.el7.x86_64
+  Runtime: Groovy 3.0.5 on Java HotSpot(TM) 64-Bit Server VM 11.0.2+9-LTS
+  Encoding: UTF-8 (UTF-8)
+  Process: 7212@lb100hmdev [10.164.94.100]
+  CPUs: 28 - Mem: 503.3 GB (400 GB) - Swap: 36 GB (36 GB)
+Jan-18 13:28:00.409 [main] DEBUG nextflow.Session - Work-dir: /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/work [gpfs]
+Jan-18 13:28:00.409 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/nextflow/workflows/bin
+Jan-18 13:28:00.448 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Jan-18 13:28:00.450 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jan-18 13:28:00.621 [main] DEBUG nextflow.Session - Session start invoked
+Jan-18 13:28:00.626 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/trace.txt
+Jan-18 13:28:01.001 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jan-18 13:28:01.223 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: mergeSampleFq, cpuDemux, demux
+Jan-18 13:28:01.246 [main] WARN  nextflow.Session - There's no process matching config selector: align
+Jan-18 13:28:01.246 [main] WARN  nextflow.Session - There's no process matching config selector: splitBam
+Jan-18 13:28:01.246 [main] WARN  nextflow.Session - There's no process matching config selector: umiCluster
+Jan-18 13:28:01.246 [main] WARN  nextflow.Session - There's no process matching config selector: consensusGen
+Jan-18 13:28:01.248 [main] WARN  nextflow.Session - There's no process matching config selector: postAln
+Jan-18 13:28:01.248 [main] WARN  nextflow.Session - There's no process matching config selector: mergeBam
+Jan-18 13:28:01.379 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:demux` matches process demux
+Jan-18 13:28:01.387 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: sge
+Jan-18 13:28:01.387 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'sge'
+Jan-18 13:28:01.395 [main] DEBUG nextflow.executor.Executor - [warm up] executor > sge
+Jan-18 13:28:01.402 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'sge' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Jan-18 13:28:01.406 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'sge' > queue-stat-interval: 1m
+Jan-18 13:28:01.495 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:mergeSampleFq` matches process mergeSampleFq
+Jan-18 13:28:01.496 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: sge
+Jan-18 13:28:01.496 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'sge'
+Jan-18 13:28:01.499 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Jan-18 13:28:01.505 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > demux
+Jan-18 13:28:01.507 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mergeSampleFq
+Jan-18 13:28:01.507 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jan-18 13:28:01.507 [main] DEBUG nextflow.Session - Session await
+Jan-18 13:28:01.512 [PathVisitor-1] DEBUG nextflow.file.FileHelper - Creating a file system instance for provider: S3FileSystemProvider
+Jan-18 13:28:01.523 [PathVisitor-1] DEBUG nextflow.Global - Using AWS temporary session credentials defined in `default` section in file: /home/kimh89/.aws/credentials
+Jan-18 13:28:01.523 [PathVisitor-1] DEBUG nextflow.file.FileHelper - Using AWS temporary session token for S3FS.
+Jan-18 13:28:01.524 [PathVisitor-1] DEBUG nextflow.file.FileHelper - AWS S3 config details: {session_token=IQoJb3.., secret_key=wfCu/+.., region=us-west-2, access_key=ASIAZ2..}
+Jan-18 13:28:02.986 [Actor Thread 2] DEBUG nextflow.util.CacheHelper - Unable to get file attributes file: s3://bfx-ngs-data-catalog/bfx-ngs-pipeline-data/run_fastq_10k.fastq.gz/run_fastq_10k.fastq.gz -- Cause: java.nio.file.NoSuchFileException: s3://bfx-ngs-data-catalog//bfx-ngs-data-catalog/bfx-ngs-pipeline-data/run_fastq_10k.fastq.gz/run_fastq_10k.fastq.gz
+Jan-18 13:28:02.993 [Actor Thread 2] DEBUG n.splitter.AbstractTextSplitter - Splitter `Fastq` collector path: nextflow.splitter.TextFileCollector$CachePath(/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs-AVC-225/pipeline/examples/SC1/output_demux_10k_params_s3/work/b3/51df4dee42785ef641bae03dcba187/run_fastq_10k.fastq, null)
+Jan-18 13:28:03.070 [Actor Thread 2] ERROR nextflow.extension.DataflowHelper - @unknown
+java.nio.file.NoSuchFileException: /bfx-ngs-data-catalog/bfx-ngs-pipeline-data/run_fastq_10k.fastq.gz/run_fastq_10k.fastq.gz
+	at com.upplication.s3fs.S3FileSystemProvider.newInputStream(S3FileSystemProvider.java:279)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:155)
+	at nextflow.splitter.AbstractSplitter.newInputStream(AbstractSplitter.groovy:454)
+	at nextflow.splitter.AbstractTextSplitter.newReader(AbstractTextSplitter.groovy:145)
+	at nextflow.splitter.AbstractTextSplitter.normalizeSource(AbstractTextSplitter.groovy:123)
+	at nextflow.splitter.AbstractTextSplitter.normalizeSource(AbstractTextSplitter.groovy)
+	at nextflow.splitter.AbstractSplitter.apply(AbstractSplitter.groovy:154)
+	at nextflow.extension.SplitOp$_applySplittingOperator_closure1.doCall(SplitOp.groovy:190)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:263)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1026)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:38)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
+	at nextflow.extension.DataflowHelper$_subscribeImpl_closure2.doCall(DataflowHelper.groovy:289)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:263)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1026)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.startTask(DataflowOperatorActor.java:120)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.onMessage(DataflowOperatorActor.java:108)
+	at groovyx.gpars.actor.impl.SDAClosure$1.call(SDAClosure.java:43)
+	at groovyx.gpars.actor.AbstractLoopingActor.runEnhancedWithoutRepliesOnMessages(AbstractLoopingActor.java:293)
+	at groovyx.gpars.actor.AbstractLoopingActor.access$400(AbstractLoopingActor.java:30)
+	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:93)
+	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Jan-18 13:28:03.079 [Actor Thread 2] DEBUG nextflow.Session - Session aborted -- Cause: /bfx-ngs-data-catalog/bfx-ngs-pipeline-data/run_fastq_10k.fastq.gz/run_fastq_10k.fastq.gz
+Jan-18 13:28:03.096 [Actor Thread 2] DEBUG nextflow.Session - The following nodes are still active:
+[process] demux
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: chunkNum
+  port 1: (queue) OPEN  ; channel: runFastq
+  port 2: (value) bound ; channel: regexpattern
+  port 3: (cntrl) -     ; channel: $
+
+[process] mergeSampleFq
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: sampleName
+  port 1: (queue) OPEN  ; channel: *
+  port 2: (cntrl) -     ; channel: $
+
+Jan-18 13:28:03.104 [main] DEBUG nextflow.Session - Session await > all process finished
+Jan-18 13:28:03.104 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jan-18 13:28:03.112 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Jan-18 13:28:03.112 [main] DEBUG nextflow.trace.TraceFileObserver - Flow completing -- flushing trace file
+Jan-18 13:28:03.114 [main] DEBUG nextflow.trace.ReportObserver - Flow completing -- rendering html report
+Jan-18 13:28:03.118 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  []
+Jan-18 13:28:03.867 [main] DEBUG nextflow.trace.TimelineObserver - Flow completing -- rendering html timeline
+Jan-18 13:28:03.880 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Jan-18 13:28:03.883 [main] DEBUG nextflow.util.SpuriousDeps - AWS S3 uploader shutdown
+Jan-18 13:28:03.895 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
