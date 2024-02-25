@@ -13,10 +13,10 @@ $NEXTFLOW_VER/nextflow run ../../nextflow/workflows/demux2samples.nf \
 -with-timeline $OUTPUT_DIR/timeline.html \
 -with-trace $OUTPUT_DIR/trace.txt \
 -work-dir $OUTPUT_DIR/work \
---runFastq "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz" \
---regexpattern "/sc1/groups/naa/DATA/SBX/pipeline/resource/pocc_patterns_072722.txt" \
---reference  "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa" \
---regions "/sc1/groups/naa/DATA/SBX/pipeline/resource/regions3.bed" \
+--runFastq "/run_fastq_10k.fastq.gz" \
+--regexpattern "/pocc_patterns_072722.txt" \
+--reference  "/GRCh38.fa" \
+--regions "/resource/regions3.bed" \
 --chunkSize 2500 \
 --splitByChrom true \
 --finalDir $OUTPUT_DIR | tee -a  $OUTPUT_DIR/log.txt
