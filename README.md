@@ -1,4 +1,4 @@
-# Draft for SBX Pipeline Structure and Usage
+# Draft for Pipeline Structure and Usage
 - **[projectDir](./nextflow)** -- directory where the main workflow script is located.
 - **[modules](./nextflow/modules)** -- directory where module scripts are located. Reuseable modules are in here. A module can consists of process definitions or functions.
 - **parameterfile** -- file containing parameters to pass to a script using the `-params-file` or `-c` option. This will be a yaml file containing the following information:
@@ -190,7 +190,7 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/demultiplex.nf \
 -with-trace $OUTPUT_DIR/trace.txt \
 -work-dir $OUTPUT_DIR/work \
 --runFastq "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz" \
---regexpattern "/sc1/groups/bfx-red/projects/Carlo/pipeline_runs/users/shannog2/cloud_0722_pocc/pocc_patterns_072722.txt" \
+--regexpattern "/cloud_0722_pocc/pocc_patterns_072722.txt" \
 --finalDir $OUTPUT_DIR | tee -a  $OUTPUT_DIR/log.txt
 
 or
@@ -206,9 +206,9 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/demultiplex.nf \
 ```
 ##### Params (for the option -c)
 ```
-params.runFastq = "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz"
-params.regexpattern = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/params/pocc_patterns_072722.txt"
-params.finalDir = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k"
+params.runFastq = "./run_fastq_10k.fastq.gz"
+params.regexpattern = "./pocc_patterns_072722.txt"
+params.finalDir = "./examples/out_10k"
 ```
 
 #### Using Yaml
@@ -226,8 +226,8 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/demultiplex.nf \
 ```
 ##### Yaml (for the option -params-file )
 ```
-runFastq: '/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz'
-regexpattern: '/sc1/groups/bfx-red/projects/Carlo/pipeline_runs/users/shannog2/cloud_0722_pocc/pocc_patterns_072722.txt'
+runFastq: './run_fastq_10k.fastq.gz'
+regexpattern: '/cloud_0722_pocc/pocc_patterns_072722.txt'
 finalDir: './output_all'
 
 ```
@@ -244,9 +244,9 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/single-sample.nf \
 -with-trace $OUTPUT_DIR/trace.txt \
 -w $OUTPUT_DIR/work \
 --sampleNmae "cfDNA6" \
---sampleFastq "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_demux_10k_params/analysis/demux/cfDNA6/cfDNA6.run_fastq_10k.umis.demux.fq.gz" \
---reference  "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa" \
---regions "/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed" \
+--sampleFastq "./cfDNA6.run_fastq_10k.umis.demux.fq.gz" \
+--reference  "./GRCh38.fa" \
+--regions "/NAA0061/regions3.bed" \
 --finalDir $OUTPUT_DIR | tee -a  $OUTPUT_DIR/log.txt
 
 or
@@ -264,14 +264,14 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/single-sample.nf \
 
 ##### Params (for the option -c)
 ```
-params.runFastq = "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz"
-params.regexpattern = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/params/pocc_patterns_072722.txt"
-params.finalDir = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k"
+params.runFastq = "./run_fastq_10k.fastq.gz"
+params.regexpattern = "./pipeline/examples/params/pocc_patterns_072722.txt"
+params.finalDir = "./pipeline/examples/out_10k"
 
 params.sampleName="cfDNA6"
-params.sampleFastq = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k/analysis/demux/cfDNA6/cfDNA6.run_fastq_10k.umis.demux.fq.gz"
-params.reference = "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa"
-params.bed = "/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed"
+params.sampleFastq = "./cfDNA6.run_fastq_10k.umis.demux.fq.gz"
+params.reference = "./GRCh38.fa"
+params.bed = "/NAA0061/regions3.bed"
 ```
 #### Using Yaml
 ##### Command
@@ -290,12 +290,12 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/single-sample.nf \
 ##### Yaml (for the option -params-file )
 ```
 runFastq: '/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz'
-regexpattern: '/sc1/groups/bfx-red/projects/Carlo/pipeline_runs/users/shannog2/cloud_0722_pocc/pocc_patterns_072722.txt'
+regexpattern: './pocc_patterns_072722.txt'
 finalDir: './output_all'
 sampleName: 'cfDNA6'
-sampleFastq: '/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_demux_10k_yaml/analysis/demux/cfDNA6/cfDNA6.run_fastq_10k.umis.demux.fq.gz'
-reference: '/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa'
-regions: '/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed'
+sampleFastq: './cfDNA6.run_fastq_10k.umis.demux.fq.gz'
+reference: './GRCh38.fa'
+regions: '/NAA0061/regions3.bed'
 ```
 
 ### Demux2Samples
@@ -329,14 +329,14 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/demux2samples.nf \
 ```
 ##### params (for the option -c)
 ```
-params.runFastq = "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz"
-params.regexpattern = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/params/pocc_patterns_072722.txt"
-params.finalDir = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k"
+params.runFastq = "/run_fastq_10k.fastq.gz"
+params.regexpattern = "pocc_patterns_072722.txt"
+params.finalDir = "./pipeline/examples/out_10k"
 
 params.sampleName="cfDNA6"
-params.sampleFastq = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k/analysis/demux/cfDNA6/cfDNA6.run_fastq_10k.umis.demux.fq.gz"
-params.reference = "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa"
-params.bed = "/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed"
+params.sampleFastq = "./cfDNA6.run_fastq_10k.umis.demux.fq.gz"
+params.reference = "/GRCh38.fa"
+params.bed = "/NAA0061/regions3.bed"
 ```
 #### Using Yaml
 ##### Command
@@ -354,11 +354,11 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/demux2samples.nf \
 ```
 ##### Yaml (for the option -params-file)
 ```
-runFastq: '/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz'
-regexpattern: '/sc1/groups/bfx-red/projects/Carlo/pipeline_runs/users/shannog2/cloud_0722_pocc/pocc_patterns_072722.txt'
+runFastq: '/run_fastq_10k.fastq.gz'
+regexpattern: '/pocc_patterns_072722.txt'
 finalDir: './output_all'
-reference: '/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa' \
-regions: '/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed'
+reference: '/GRCh38.fa' \
+regions: '/NAA0061/regions3.bed'
 ```
 
 ### Wrapper 
@@ -386,17 +386,17 @@ Options: -p|--params         parameter file
 #### Command for demultiplexing+single-sample
 ```
 bash wrapper_params.sh \
--p /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/nextflow/params/SC1/params_demux2samples_10k_sc1.txt \
--o /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_wrapper \
+-p /pipeline/nextflow/params/SC1/params_demux2samples_10k_sc1.txt \
+-o /pipeline/examples/output_wrapper \
 -e local
 ```
 #### Params for demuxed single-sample(s)
 ```
 bash wrapper_params.sh \
--p /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/nextflow/params/SC1/params_demux2samples_10k_sc1.txt \
--o /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_samples \
+-p /params_demux2samples_10k_sc1.txt \
+-o /pipeline/examples/output_samples \
 -e local \
--d /sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_wrapper/analysis/demux \
+-d /pipeline/examples/output_wrapper/analysis/demux \
 -seg single-sample
 ```
 
@@ -433,10 +433,10 @@ $NEXTFLOW_VER/nextflow run ../nextflow/workflows/umiCluster.nf \
 -with-trace $OUTPUT_DIR/trace.txt \
 -work-dir $OUTPUT_DIR/work \
 --sampleName "cfDNA6" \
---bam "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_samples/analysis/cfDNA6/align/cfDNA6.sorted.bam" \
---bai "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/output_samples/analysis/cfDNA6/align/cfDNA6.sorted.bam.bai" \
---reference  "/sc1/groups/bfx-red/data/datainsights/reference_genome/human/hg38decoy/GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fa" \
---regions "/sc1/groups/naa/People/padhukab/Analyses/NAA/NAA0061/regions3.bed" \
+--bam "/cfDNA6.sorted.bam" \
+--bai "/cfDNA6.sorted.bam.bai" \
+--reference  "GRCh38.fa" \
+--regions "/NAA0061/regions3.bed" \
 --finalDir $OUTPUT_DIR | tee -a  $OUTPUT_DIR/log.txt
 
 ```
