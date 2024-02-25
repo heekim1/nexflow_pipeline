@@ -1,3 +1,0 @@
-params.runFastq = "/sc1/groups/naa/DATA/SBX/fastq/poccrun/run_fastq_10k.fastq.gz"
-params.regexpattern = "/sc1/groups/bfx-red/projects/Carlo/pipeline_runs/users/shannog2/cloud_0722_pocc/pocc_patterns_072722.txt"
-params.finalDir = "/sc1/groups/onco/Analysis/bioinfo_analyses/kimh89/SBX/bfx-ngs/pipeline/examples/out_10k"
